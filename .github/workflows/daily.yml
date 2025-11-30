@@ -20,6 +20,9 @@ jobs:
       - name: Install deps
         run: npm install node-fetch cheerio
 
+      - name: Make public folder
+        run: mkdir -p public
+
       - name: Build JSON
         run: node fetch_and_build.js > public/prices.json
         
