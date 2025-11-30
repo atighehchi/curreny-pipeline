@@ -37,17 +37,18 @@ async function fetchJSON() {
   return out;
 }
 
-/*
 // 2. Fetch HTML table (TGJU site)
 async function fetchHTML() {
-  const url = "https://www.tgju.org/%D9%85%D8%B1%DA%A9%D8%B2-%D9%85%D8%A8%D8%A7%D8%AF%D9%84%D9%87-%D8%A7%D8%B1%D8%B2-%D9%88-%D8%B7%D9%84%D8%A7%DB%8C-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86";
+  const url = "https://www.tgju.org/مرکز-مبادله-ارز-و-طلای-ایران";
   const res = await fetch(url, {
     headers: {
       "User-Agent":
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +
         "(KHTML, like Gecko) Chrome/120.0 Safari/537.36",
-      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,* /*;q=0.8",   //// remove the space from "* /*"
-      "Accept-Language": "fa-IR,fa;q=0.9,en-US;q=0.5"
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+      "Accept-Language": "fa-IR,fa;q=0.9,en-US;q=0.8,en;q=0.7",
+      "Referer": "https://www.tgju.org/",
+      "Connection": "keep-alive"
     }
   });
   if (!res.ok) throw new Error(`HTML fetch failed: ${res.status}`);
@@ -99,7 +100,7 @@ function parseHTML(html) {
 
   return map;
 }
-*/
+
 // 4. Main pipeline
 async function main() {
   try {
