@@ -89,10 +89,9 @@ function parseHTML(html) {
               $(tr).attr("data-price") ||
               $(tr).find("td.nf").first().text().trim();
             const num = parseInt(priceStr.replace(/,/g, ""), 10);
-            const formatted = fmt(num / 10); // divide by 10 like before
-
+            const value = Math.round(num / 10); // plain integer, English digits
             if (!map[code]) map[code] = {};
-            map[code][label] = formatted;
+            map[code][label] = value; // store as number
           }
         });
     }
@@ -124,8 +123,8 @@ async function main() {
 
     const output = {};
     for (const code of symbols) {
-      const freeRaw = jsonData?.[code]?.price ?? "-";
-      const free = typeof freeRaw === "number" ? fmt(freeRaw) : freeRaw;
+      const freeRaw = jsonData?.[code]?.price ?? null;
+      const free = typeof freeRaw === "number" ? Math.round(freeRaw) : null;
 
       output[code] = {
         "بازار آزاد": free,
@@ -135,21 +134,13 @@ async function main() {
       // --- compare all 5 prices ---
       const labels = ["بازار آزاد","نرخ خرید (اسکناس)","نرخ فروش (اسکناس)","نرخ خرید (حواله)","نرخ فروش (حواله)"];
       for (const label of labels) {
-        const prevVal = yesterday?.[code]?.[label];
-        const prevNum = parseFmt(prevVal);
-        const currVal = output[code]?.[label];
-        const currNum = parseFmt(currVal);
-
-        if (prevNum && currNum) {
-          if (currNum > prevNum) {
-            output[code][`${label} تغییر`] = "⬆️";
-          } else if (currNum < prevNum) {
-            output[code][`${label} تغییر`] = "⬇️";
-          } else {
-            output[code][`${label} تغییر`] = "➖";
-          }
-        } else {
-          output[code][`${label} تغییر`] = "-";
+        const prevNum = yesterday?.[code]?.[label];
+        const currNum = output[code][label];
+        
+        if (typeof prevNum === "number" && typeof currNum === "number") {
+          if (currNum > prevNum) output[code][`${label} تغییر`] = "⬆️ افزایش";
+          else if (currNum < prevNum) output[code][`${label} تغییر`] = "⬇️ کاهش";
+          else output[code][`${label} تغییر`] = "➖ بدون تغییر";
         }
       }
     }
