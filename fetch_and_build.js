@@ -138,9 +138,9 @@ async function main() {
         const currNum = output[code][label];
         
         if (typeof prevNum === "number" && typeof currNum === "number") {
-          if (currNum > prevNum) output[code][`${label} تغییر`] = "⬆️ افزایش";
-          else if (currNum < prevNum) output[code][`${label} تغییر`] = "⬇️ کاهش";
-          else output[code][`${label} تغییر`] = "➖ بدون تغییر";
+          if (currNum > prevNum) output[code][`${label} تغییر`] = "⬆️";
+          else if (currNum < prevNum) output[code][`${label} تغییر`] = "⬇️";
+          else output[code][`${label} تغییر`] = "➖";
         }
       }
     }
