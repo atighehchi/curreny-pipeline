@@ -148,7 +148,7 @@ async function main() {
             output[code][`${label} تغییر`] = "➖";
           }
         } else {
-          output[code][`${label} تغییر`] = "-";
+          output[code][`${label} تغییر`] = "!";
         }
       }
     }
