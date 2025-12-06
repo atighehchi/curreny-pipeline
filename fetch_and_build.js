@@ -105,15 +105,6 @@ async function main() {
     const [jsonData, html] = await Promise.all([fetchJSON(), fetchHTML()]);
     const htmlData = parseHTML(html);
 
-    // --- load yesterday’s JSON if exists ---
-    let yesterday = {};
-    try {
-      const prev = fs.readFileSync("public/prices.json", "utf8");
-      yesterday = JSON.parse(prev);
-    } catch (e) {
-      console.error("Failed to read yesterday's file:", e.message);
-    }
-
     const output = {};
     const labels = [
       "Free Market",
@@ -122,6 +113,16 @@ async function main() {
       "Remit Buy",
       "Remit Sell"
     ];
+    
+    // --- load yesterday’s JSON if exists ---
+    let yesterday = {};
+    try {
+      const prev = fs.readFileSync("public/prices.json", "utf8");
+      yesterday = JSON.parse(prev);
+    } catch (e) {
+      output["error"]={"error":e.message;}
+    }
+
 
     for (const code of symbols) {
       const freeRaw = jsonData?.[code]?.price ?? null;
