@@ -120,7 +120,7 @@ async function main() {
       const prev = fs.readFileSync("public/prices.json", "utf8");
       yesterday = JSON.parse(prev);
     } catch (e) {
-      output["error"]={"error":e.message;}
+      output["error"]={"error":e.message}
     }
 
 
