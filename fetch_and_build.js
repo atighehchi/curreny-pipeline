@@ -131,6 +131,12 @@ async function main() {
         ...htmlData[code]
       };
 
+      // --- debug: show keys for yesterday vs today ---
+      console.log(`\n=== ${code} ===`);
+      console.log("Yesterday keys:", Object.keys(yesterday?.[code] || {}));
+      console.log("Today keys:", Object.keys(output[code]));
+
+
       // --- compare all 5 prices ---
       for (const label of labels) {
         const prevNum = yesterday?.[code]?.[label];
