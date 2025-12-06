@@ -31,6 +31,7 @@ jobs:
         with:
           name: prices-json
           path: public
+        continue-on-error: true
 
       - name: Build JSON
         run: node fetch_and_build.js
