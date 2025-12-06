@@ -29,6 +29,12 @@ jobs:
       - name: Build JSON
         run: node fetch_and_build.js > public/prices.json
 
+      - name: Deploy to Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: public
+      
       - name: Commit and push updated prices.json
         run: |
           git config --global user.name "github-actions[bot]"
@@ -36,9 +42,3 @@ jobs:
           git add public/prices.json
           git commit -m "Update prices.json [skip ci]" || echo "No changes to commit"
           git push
-
-      - name: Deploy to Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: public
