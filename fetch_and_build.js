@@ -60,19 +60,18 @@ function parseHTML(html) {
   const $ = cheerio.load(html);
   const map = {};
 
-  // Persian headings we care about
-  const categories = {
+  // Define canonical labels once
+  const labels = {
     "فروش ( اسکناس )": "نرخ فروش (اسکناس)",
     "خرید ( اسکناس )": "نرخ خرید (اسکناس)",
     "فروش ( حواله )": "نرخ فروش (حواله)",
     "خرید ( حواله )": "نرخ خرید (حواله)"
   };
 
-  // Loop over each table
   $("table.data-table.market-table").each((_, table) => {
     const heading = $(table).find("thead th").first().text().trim();
-    if (categories[heading]) {
-      const label = categories[heading];
+    if (labels[heading]) {
+      const label = labels[heading];
 
       $(table)
         .find("tbody tr")
@@ -89,9 +88,9 @@ function parseHTML(html) {
               $(tr).attr("data-price") ||
               $(tr).find("td.nf").first().text().trim();
             const num = parseInt(priceStr.replace(/,/g, ""), 10);
-            const value = Math.round(num / 10); // plain integer, English digits
+            const value = Math.round(num / 10); // plain integer
             if (!map[code]) map[code] = {};
-            map[code][label] = value; // store as number
+            map[code][label] = value;
           }
         });
     }
@@ -101,8 +100,6 @@ function parseHTML(html) {
 }
 
 // 4. Main pipeline
-import fs from "fs";
-
 async function main() {
   try {
     const [jsonData, html] = await Promise.all([fetchJSON(), fetchHTML()]);
@@ -116,25 +113,24 @@ async function main() {
     } catch (e) {}
 
     const output = {};
+    const labels = [
+      "بازار آزاد",
+      "نرخ خرید (اسکناس)",
+      "نرخ فروش (اسکناس)",
+      "نرخ خرید (حواله)",
+      "نرخ فروش (حواله)"
+    ];
+
     for (const code of symbols) {
-      // بازار آزاد as plain number
       const freeRaw = jsonData?.[code]?.price ?? null;
       const free = typeof freeRaw === "number" ? Math.round(freeRaw) : null;
 
       output[code] = {
         "بازار آزاد": free,
-        ...htmlData[code]   // htmlData already stores numbers now
+        ...htmlData[code]
       };
 
       // --- compare all 5 prices ---
-      const labels = [
-        "بازار آزاد",
-        "نرخ خرید (اسکناس)",
-        "نرخ فروش (اسکناس)",
-        "نرخ خرید (حواله)",
-        "نرخ فروش (حواله)"
-      ];
-
       for (const label of labels) {
         const prevNum = yesterday?.[code]?.[label];
         const currNum = output[code]?.[label];
@@ -153,7 +149,6 @@ async function main() {
       }
     }
 
-    // --- write new JSON ---
     fs.writeFileSync("public/prices.json", JSON.stringify(output, null, 2), "utf8");
     console.log(JSON.stringify(output, null, 2));
   } catch (err) {
