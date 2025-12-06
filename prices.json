@@ -3,13 +3,13 @@
     "error": "Unexpected end of JSON input"
   },
   "USD": {
-    "Free Market": 122155,
+    "Free Market": 122120,
     "Cash Buy": 73187,
     "Cash Sell": 73852,
     "Remit Buy": 71056,
     "Remit Sell": 71701,
     "Free Market Change": "!",
-    "Free Market debug_curr": 122155,
+    "Free Market debug_curr": 122120,
     "Cash Buy Change": "!",
     "Cash Buy debug_curr": 73187,
     "Cash Sell Change": "!",
@@ -20,13 +20,13 @@
     "Remit Sell debug_curr": 71701
   },
   "EUR": {
-    "Free Market": 142250,
+    "Free Market": 142240,
     "Cash Buy": 85158,
     "Cash Sell": 85931,
     "Remit Buy": 82678,
     "Remit Sell": 83429,
     "Free Market Change": "!",
-    "Free Market debug_curr": 142250,
+    "Free Market debug_curr": 142240,
     "Cash Buy Change": "!",
     "Cash Buy debug_curr": 85158,
     "Cash Sell Change": "!",
@@ -37,13 +37,13 @@
     "Remit Sell debug_curr": 83429
   },
   "AED": {
-    "Free Market": 33263,
+    "Free Market": 33260,
     "Cash Buy": 19929,
     "Cash Sell": 20110,
     "Remit Buy": 19348,
     "Remit Sell": 19524,
     "Free Market Change": "!",
-    "Free Market debug_curr": 33263,
+    "Free Market debug_curr": 33260,
     "Cash Buy Change": "!",
     "Cash Buy debug_curr": 19929,
     "Cash Sell Change": "!",
