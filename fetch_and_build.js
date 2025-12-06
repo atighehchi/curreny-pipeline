@@ -118,9 +118,13 @@ async function main() {
     let yesterday = {};
     try {
       const prev = fs.readFileSync("public/prices.json", "utf8");
-      yesterday = JSON.parse(prev);
+      if (prev.trim().length > 0) {
+        yesterday = JSON.parse(prev);
+      } else {
+        output["warnings"]={"warning":"Yesterday file is empty, skipping comparison."}
+      }
     } catch (e) {
-      output["error"]={"error":e.message}
+      output["errors"]={"error":e.message}
     }
 
 
@@ -155,7 +159,7 @@ async function main() {
     }
 
     fs.writeFileSync("public/prices.json", JSON.stringify(output, null, 2), "utf8");
-    console.log(JSON.stringify(output, null, 2));
+    //console.log(JSON.stringify(output, null, 2));
   } catch (err) {
     console.error("Pipeline error:", err.message);
     process.exit(1);
