@@ -144,11 +144,11 @@ async function main() {
 
         if (typeof prevNum === "number" && typeof currNum === "number") {
           if (currNum > prevNum) {
-            output[code][`${label} Change`] = "⬆️";
+            output[code][`${label} Change`] = "↑";
           } else if (currNum < prevNum) {
-            output[code][`${label} Change`] = "⬇️";
+            output[code][`${label} Change`] = "↓";
           } else {
-            output[code][`${label} Change`] = "➖";
+            output[code][`${label} Change`] = "─";
           }
         } else {
           output[code][`${label} Change`] = "!";  
