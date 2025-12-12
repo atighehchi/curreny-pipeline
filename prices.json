@@ -1,6 +1,6 @@
 {
   "USD": {
-    "Free Market": 125070,
+    "Free Market": 125750,
     "Cash Buy": 72514,
     "Cash Sell": 73173,
     "Remit Buy": 70402,
@@ -12,7 +12,7 @@
     "Remit Sell Change": "↓"
   },
   "EUR": {
-    "Free Market": 146440,
+    "Free Market": 147370,
     "Cash Buy": 84477,
     "Cash Sell": 85244,
     "Remit Buy": 82016,
@@ -24,7 +24,7 @@
     "Remit Sell Change": "↓"
   },
   "AED": {
-    "Free Market": 34075,
+    "Free Market": 34246,
     "Cash Buy": 19745,
     "Cash Sell": 19924,
     "Remit Buy": 19170,
@@ -36,7 +36,7 @@
     "Remit Sell Change": "↓"
   },
   "CNY": {
-    "Free Market": 17730,
+    "Free Market": 17810,
     "Cash Buy": 10263,
     "Cash Sell": 10356,
     "Remit Buy": 9964,
