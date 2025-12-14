@@ -5,11 +5,11 @@
     "Cash Sell": 73314,
     "Remit Buy": 70538,
     "Remit Sell": 71179,
-    "Free Market Change": "↑",
-    "Cash Buy Change": "↓",
-    "Cash Sell Change": "↓",
-    "Remit Buy Change": "↓",
-    "Remit Sell Change": "↓"
+    "Free Market Change": "─",
+    "Cash Buy Change": "─",
+    "Cash Sell Change": "─",
+    "Remit Buy Change": "─",
+    "Remit Sell Change": "─"
   },
   "EUR": {
     "Free Market": 151430,
@@ -17,11 +17,11 @@
     "Cash Sell": 86098,
     "Remit Buy": 82838,
     "Remit Sell": 83590,
-    "Free Market Change": "↑",
-    "Cash Buy Change": "↑",
-    "Cash Sell Change": "↑",
-    "Remit Buy Change": "↑",
-    "Remit Sell Change": "↑"
+    "Free Market Change": "─",
+    "Cash Buy Change": "─",
+    "Cash Sell Change": "─",
+    "Remit Buy Change": "─",
+    "Remit Sell Change": "─"
   },
   "AED": {
     "Free Market": 35119,
@@ -29,11 +29,11 @@
     "Cash Sell": 19963,
     "Remit Buy": 19207,
     "Remit Sell": 19382,
-    "Free Market Change": "↑",
-    "Cash Buy Change": "↓",
-    "Cash Sell Change": "↓",
-    "Remit Buy Change": "↓",
-    "Remit Sell Change": "↓"
+    "Free Market Change": "─",
+    "Cash Buy Change": "─",
+    "Cash Sell Change": "─",
+    "Remit Buy Change": "─",
+    "Remit Sell Change": "─"
   },
   "CNY": {
     "Free Market": 18280,
@@ -41,10 +41,10 @@
     "Cash Sell": 10392,
     "Remit Buy": 9998,
     "Remit Sell": 10089,
-    "Free Market Change": "↑",
-    "Cash Buy Change": "↓",
-    "Cash Sell Change": "↓",
-    "Remit Buy Change": "↓",
-    "Remit Sell Change": "↓"
+    "Free Market Change": "─",
+    "Cash Buy Change": "─",
+    "Cash Sell Change": "─",
+    "Remit Buy Change": "─",
+    "Remit Sell Change": "─"
   }
 }
