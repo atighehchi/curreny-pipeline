@@ -102,9 +102,13 @@ function parseHTML(html) {
 
 async function main() {
   try {
-    const [jsonData, html] = await Promise.all([fetchJSON(), fetchHTML()]);
-    const htmlData = parseHTML(html);
+    const [jsonData, html, yesterday] = await Promise.all([
+      fetchJSON(),
+      fetchHTML(),
+      loadYesterdayFromPages()
+    ]);
 
+    const htmlData = parseHTML(html);
     const output = {};
     const labels = [
       "Free Market",
@@ -113,20 +117,6 @@ async function main() {
       "Remit Buy",
       "Remit Sell"
     ];
-    
-    // --- load yesterday’s JSON if exists ---
-    let yesterday = {};
-    try {
-      const prev = fs.readFileSync("public/prices.json", "utf8");
-      if (prev.trim().length > 0) {
-        yesterday = JSON.parse(prev);
-      } else {
-        output["warnings"]={"warning":"Yesterday file is empty, skipping comparison."}
-      }
-    } catch (e) {
-      output["errors"]={"error":e.message}
-    }
-
 
     for (const code of symbols) {
       const freeRaw = jsonData?.[code]?.price ?? null;
@@ -151,18 +141,33 @@ async function main() {
             output[code][`${label} Change`] = "─";
           }
         } else {
-          output[code][`${label} Change`] = "!";  
-          output[code][`${label} debug_prev`] = yesterday?.[code]?.[label];
-          output[code][`${label} debug_curr`] = output[code]?.[label];
+          output[code][`${label} Change`] = "!";
+          output[code][`${label} debug_prev`] = prevNum;
+          output[code][`${label} debug_curr`] = currNum;
         }
       }
     }
 
     fs.writeFileSync("public/prices.json", JSON.stringify(output, null, 2), "utf8");
-    //console.log(JSON.stringify(output, null, 2));
   } catch (err) {
     console.error("Pipeline error:", err.message);
     process.exit(1);
+  }
+}
+
+// --- helper to fetch yesterday’s file from GitHub Pages ---
+async function loadYesterdayFromPages() {
+  try {
+    const res = await fetch("https://atighehchi.github.io/currency-pipeline/prices.json", { cache: "no-store" });
+    if (!res.ok) {
+      console.warn("Yesterday file not available:", res.status);
+      return {};
+    }
+    const json = await res.json();
+    return json;
+  } catch (e) {
+    console.warn("Error fetching yesterday file:", e.message);
+    return {};
   }
 }
 
