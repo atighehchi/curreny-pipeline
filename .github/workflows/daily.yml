@@ -2,7 +2,7 @@ name: Daily Currency Pipeline
 
 on:
   schedule:
-    - cron: "25 8 * * *"
+    - cron: "0 8 * * *"
   workflow_dispatch:
 
 permissions:
