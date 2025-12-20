@@ -1,50 +1,50 @@
 {
   "USD": {
-    "Free Market": 131630,
+    "Free Market": 132895,
     "Cash Buy": 108735,
     "Cash Sell": 109722,
-    "Remit Buy": 74311,
-    "Remit Sell": 74986,
-    "Free Market Change": "↓",
+    "Remit Buy": 75569,
+    "Remit Sell": 76256,
+    "Free Market Change": "↑",
     "Cash Buy Change": "─",
     "Cash Sell Change": "─",
-    "Remit Buy Change": "─",
-    "Remit Sell Change": "─"
+    "Remit Buy Change": "↑",
+    "Remit Sell Change": "↑"
   },
   "EUR": {
-    "Free Market": 154450,
-    "Cash Buy": 127737,
-    "Cash Sell": 128897,
-    "Remit Buy": 87298,
-    "Remit Sell": 88090,
-    "Free Market Change": "↓",
-    "Cash Buy Change": "─",
-    "Cash Sell Change": "─",
-    "Remit Buy Change": "─",
-    "Remit Sell Change": "─"
+    "Free Market": 155660,
+    "Cash Buy": 127439,
+    "Cash Sell": 128596,
+    "Remit Buy": 88569,
+    "Remit Sell": 89373,
+    "Free Market Change": "↑",
+    "Cash Buy Change": "↓",
+    "Cash Sell Change": "↓",
+    "Remit Buy Change": "↑",
+    "Remit Sell Change": "↑"
   },
   "AED": {
-    "Free Market": 35853,
+    "Free Market": 36191,
     "Cash Buy": 29608,
     "Cash Sell": 29877,
-    "Remit Buy": 20234,
-    "Remit Sell": 20418,
-    "Free Market Change": "↓",
+    "Remit Buy": 20577,
+    "Remit Sell": 20764,
+    "Free Market Change": "↑",
     "Cash Buy Change": "─",
     "Cash Sell Change": "─",
-    "Remit Buy Change": "─",
-    "Remit Sell Change": "─"
+    "Remit Buy Change": "↑",
+    "Remit Sell Change": "↑"
   },
   "CNY": {
-    "Free Market": 18700,
-    "Cash Buy": 15437,
-    "Cash Sell": 15577,
-    "Remit Buy": 10550,
-    "Remit Sell": 10646,
-    "Free Market Change": "─",
-    "Cash Buy Change": "─",
-    "Cash Sell Change": "─",
-    "Remit Buy Change": "─",
-    "Remit Sell Change": "─"
+    "Free Market": 18880,
+    "Cash Buy": 15441,
+    "Cash Sell": 15582,
+    "Remit Buy": 10732,
+    "Remit Sell": 10829,
+    "Free Market Change": "↑",
+    "Cash Buy Change": "↑",
+    "Cash Sell Change": "↑",
+    "Remit Buy Change": "↑",
+    "Remit Sell Change": "↑"
   }
 }
